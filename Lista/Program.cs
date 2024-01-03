@@ -1,5 +1,6 @@
 ﻿List<string> liguagensPogramacao = ["C#", "Java", "JavaScript"];
-List<int> somaInteiro = new List<int>();
+List<int> lisNumInteiro = new List<int>();
+List<int> armazPares = new List<int>();
 
 void MostrarLista()
 {
@@ -53,13 +54,13 @@ void EncontrarPorPosição()
 
 void MostarNumeroLista()
 {
-    if(somaInteiro.Count == 0)
+    if(lisNumInteiro.Count == 0)
     {
         Console.WriteLine("Não existe nenhum item na lista");
     } else
     {
         Console.WriteLine("A lista contém o(s) seguinte(s) número(s):");
-        foreach (int num in somaInteiro)
+        foreach (int num in lisNumInteiro)
         {
             Console.WriteLine(num);
         }
@@ -74,7 +75,7 @@ void AdicionarNumeroLista()
     { 
         Console.Write("Informe o número que deseja inserir: ");
         int numDesejado = Convert.ToInt32(Console.ReadLine()!);
-        somaInteiro.Add(numDesejado);
+        lisNumInteiro.Add(numDesejado);
         Console.Write("Deseja adicionar outro? (S/N): ");
         char adcNum = Convert.ToChar(Console.ReadLine()!.ToLower());
 
@@ -87,7 +88,7 @@ void AdicionarNumeroLista()
 
 void SomarNumerosLista()
 {
-    if(somaInteiro.Count == 0)
+    if(lisNumInteiro.Count == 0)
     {
         Console.WriteLine("Adicione pelo menos dois números antes de usar esta opção!!!");
     } else
@@ -95,12 +96,29 @@ void SomarNumerosLista()
 
         int totSoma = 0;
 
-        foreach (int numero in somaInteiro)
+        foreach (int numero in lisNumInteiro)
         {
             totSoma += numero;
         }
 
         Console.WriteLine($"A soma dos números da lista é {totSoma}");
+    }
+}
+
+void MostrarNumerosPares()
+{
+    for (int i = 0; i < lisNumInteiro.Count; i++)
+    {
+        if (lisNumInteiro[i] % 2 == 0) 
+        {
+            armazPares.Add(lisNumInteiro[i]);
+        }
+    }
+
+    Console.WriteLine("Os números pares são:");
+    foreach (int pares in armazPares)
+    {
+        Console.WriteLine(pares);
     }
 }
 
@@ -121,6 +139,7 @@ void ExecutarPrograma()
         Console.WriteLine("Digite 4 para adicionar números em uma lista!");
         Console.WriteLine("Digite 5 para mostrar os números da lista!");
         Console.WriteLine("Digite 6 para somar todos o números da lista!");
+        Console.WriteLine("Digite 7 para achar os números pares da lista!");
         Console.WriteLine("Digite 0 para sair!");
         Console.WriteLine("***********************************************************************************");
         Console.Write("\n--> ");
@@ -161,6 +180,12 @@ void ExecutarPrograma()
             case 6:
                 Console.Clear();
                 SomarNumerosLista();
+                Console.Write("\nAGUARDE 3 SEGUNDOS, NÃO FAÇA NADA!!!");
+                Thread.Sleep(3000);
+                break;
+            case 7:
+                Console.Clear();
+                MostrarNumerosPares();
                 Console.Write("\nAGUARDE 3 SEGUNDOS, NÃO FAÇA NADA!!!");
                 Thread.Sleep(3000);
                 break;
